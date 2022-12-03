@@ -1,0 +1,18 @@
+{
+  "balance": 0,
+  "holdings": [
+    {
+      "exchange": "NMS",
+      "shortname": "Tesla, Inc.",
+      "quoteType": "EQUITY",
+      "symbol": "TSLA",
+      "index": "quotes",
+      "score": 1196578,
+      "typeDisp": "Equity",
+      "longname": "Tesla, Inc.",
+      "exchDisp": "NASDAQ",
+      "isYahooFinance": true,
+      "regularMarketPrice": 0
+    }
+  ]
+}

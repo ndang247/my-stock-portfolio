@@ -1,0 +1,169 @@
+{
+  "explains": [],
+  "count": 15,
+  "quotes": [
+    {
+      "exchange": "NMS",
+      "shortname": "Tesla, Inc.",
+      "quoteType": "EQUITY",
+      "symbol": "TSLA",
+      "index": "quotes",
+      "score": 1196578,
+      "typeDisp": "Equity",
+      "longname": "Tesla, Inc.",
+      "exchDisp": "NASDAQ",
+      "isYahooFinance": true
+    },
+    {
+      "exchange": "NEO",
+      "shortname": "TESLA, INC. CDR (CAD HEDGED)",
+      "quoteType": "EQUITY",
+      "symbol": "TSLA.NE",
+      "index": "quotes",
+      "score": 22383,
+      "typeDisp": "Equity",
+      "longname": "Tesla, Inc.",
+      "exchDisp": "NEO",
+      "isYahooFinance": true
+    },
+    {
+      "exchange": "GER",
+      "shortname": "TESLA INC",
+      "quoteType": "EQUITY",
+      "symbol": "TL0.DE",
+      "index": "quotes",
+      "score": 20823,
+      "typeDisp": "Equity",
+      "longname": "Tesla, Inc.",
+      "exchDisp": "XETRA",
+      "isYahooFinance": true
+    },
+    {
+      "exchange": "LSE",
+      "shortname": "LEVERAGE SHARES PUBLIC LIMITED ",
+      "quoteType": "EQUITY",
+      "symbol": "TSL3.L",
+      "index": "quotes",
+      "score": 20458,
+      "typeDisp": "Equity",
+      "longname": "Leverage Shares 3x Tesla ETP",
+      "exchDisp": "London",
+      "isYahooFinance": true
+    },
+    {
+      "exchange": "FRA",
+      "shortname": "TESLA INC",
+      "quoteType": "EQUITY",
+      "symbol": "TL0.F",
+      "index": "quotes",
+      "score": 20411,
+      "typeDisp": "Equity",
+      "longname": "Tesla, Inc.",
+      "exchDisp": "Frankfurt",
+      "isYahooFinance": true
+    },
+    {
+      "exchange": "MEX",
+      "shortname": "TESLA INC",
+      "quoteType": "EQUITY",
+      "symbol": "TSLA.MX",
+      "index": "quotes",
+      "score": 20240,
+      "typeDisp": "Equity",
+      "longname": "Tesla, Inc.",
+      "exchDisp": "Mexico",
+      "isYahooFinance": true
+    },
+    {
+      "exchange": "LSE",
+      "shortname": "GRANITESHARES FINANCIAL PLC GRA",
+      "quoteType": "EQUITY",
+      "symbol": "3STS.L",
+      "index": "quotes",
+      "score": 20208,
+      "typeDisp": "Equity",
+      "longname": "Graniteshares Financial PLC - 3X Short Tesla Daily ETP",
+      "exchDisp": "London",
+      "isYahooFinance": true
+    }
+  ],
+  "news": [
+    {
+      "uuid": "1290d6ab-a5b1-3718-86d9-d4814e62c904",
+      "title": "Tesla Stock Vs. BYD Stock: Tesla Growing Fast, But EV Rival Sets 1.5 Million Sales Target For 2022",
+      "publisher": "Investor's Business Daily",
+      "link": "https://finance.yahoo.com/m/1290d6ab-a5b1-3718-86d9-d4814e62c904/tesla-stock-vs.-byd-stock%3A.html",
+      "providerPublishTime": 1645023684,
+      "type": "STORY"
+    },
+    {
+      "uuid": "96a882c7-93dd-3b51-a740-99955696bbdc",
+      "title": "Tesla Revenue Up 65% -- Beating Wall Street Estimates by Over $1 Billion",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/m/96a882c7-93dd-3b51-a740-99955696bbdc/tesla-revenue-up-65%25-.html",
+      "providerPublishTime": 1645016400,
+      "type": "STORY"
+    },
+    {
+      "uuid": "b9ca3266-b443-3526-8878-f4d435129fee",
+      "title": "Tesla's Decision to Not Develop a Lower-Priced Car Is Risky, Says Analyst",
+      "publisher": "Barrons.com",
+      "link": "https://finance.yahoo.com/m/b9ca3266-b443-3526-8878-f4d435129fee/tesla%E2%80%99s-decision-to-not.html",
+      "providerPublishTime": 1645024140,
+      "type": "STORY"
+    },
+    {
+      "uuid": "b4ac249b-832c-3d50-b3c5-b75dbc6b4c6f",
+      "title": "Tesla Front-Runs Another Regulator, This Time in a Race Case",
+      "publisher": "Bloomberg",
+      "link": "https://finance.yahoo.com/news/tesla-front-runs-another-regulator-123022596.html",
+      "providerPublishTime": 1645014622,
+      "type": "STORY"
+    },
+    {
+      "uuid": "735eed9f-74f0-3e26-9e90-1c1db0fda6ac",
+      "title": "Tesla Stock Needs to Break Free From Putin and Powell",
+      "publisher": "Barrons.com",
+      "link": "https://finance.yahoo.com/m/735eed9f-74f0-3e26-9e90-1c1db0fda6ac/tesla-stock-needs-to-break.html",
+      "providerPublishTime": 1644941880,
+      "type": "STORY"
+    },
+    {
+      "uuid": "e873a849-3d75-3c37-b496-62b065e610da",
+      "title": "Elon Musk gave 5 million Tesla shares to charity, but World Food Program has not received anything yet",
+      "publisher": "MarketWatch",
+      "link": "https://finance.yahoo.com/m/e873a849-3d75-3c37-b496-62b065e610da/elon-musk-gave-5-million.html",
+      "providerPublishTime": 1644966600,
+      "type": "STORY"
+    },
+    {
+      "uuid": "d342cd56-d5bb-3957-a230-286c491ffc51",
+      "title": "Tesla's Elon Musk Gave Away $5.7 Billion. But to Whom? We Have a Guess.",
+      "publisher": "Barrons.com",
+      "link": "https://finance.yahoo.com/m/d342cd56-d5bb-3957-a230-286c491ffc51/tesla%E2%80%99s-elon-musk-gave-away.html",
+      "providerPublishTime": 1644931380,
+      "type": "STORY"
+    },
+    {
+      "uuid": "95145385-c3a3-32d0-87fa-dfc3bf7f2151",
+      "title": "A Seat on a Virgin Galactic Space Trip Costs 10 Tesla Cars",
+      "publisher": "Barrons.com",
+      "link": "https://finance.yahoo.com/m/95145385-c3a3-32d0-87fa-dfc3bf7f2151/a-seat-on-a-virgin-galactic.html",
+      "providerPublishTime": 1645024020,
+      "type": "STORY"
+    }
+  ],
+  "nav": [],
+  "lists": [],
+  "researchReports": [],
+  "screenerFieldResults": [],
+  "totalTime": 62,
+  "timeTakenForQuotes": 448,
+  "timeTakenForNews": 600,
+  "timeTakenForAlgowatchlist": 400,
+  "timeTakenForPredefinedScreener": 400,
+  "timeTakenForCrunchbase": 0,
+  "timeTakenForNav": 400,
+  "timeTakenForResearchReports": 0,
+  "timeTakenForScreenerField": 0
+}
