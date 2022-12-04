@@ -11,8 +11,10 @@ const CashAccounts = (props) => {
     const db = getDatabase(firebaseApp);
     onValue(ref(db, "portfolio/"), (snapshot) => {
       const data = snapshot.val();
-      console.log(data);
-      setBalance(data?.balance);
+      // console.log(data);
+      if (data?.balance) {
+        setBalance(data.balance);
+      }
     });
   }, []);
 

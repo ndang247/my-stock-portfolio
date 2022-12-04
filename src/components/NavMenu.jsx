@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  AppstoreOutlined,
-  StockOutlined,
-  DollarOutlined,
-} from "@ant-design/icons";
+import { StockOutlined, DollarOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
 
@@ -21,9 +17,9 @@ const items = [
 ];
 
 const NavMenu = () => {
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState("overview");
   const onClick = (e) => {
-    console.log("click ", e);
+    // console.log("click ", e);
     setCurrent(e.key);
   };
 

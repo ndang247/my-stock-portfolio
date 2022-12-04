@@ -15,7 +15,9 @@ const AddCashForm = (props) => {
 
     onValue(ref(db, "portfolio/"), (snapshot) => {
       const data = snapshot.val();
-      currentBalance = data?.balance;
+      if (data?.balance) {
+        currentBalance = data.balance;
+      }
     });
 
     set(ref(db, "portfolio/"), {

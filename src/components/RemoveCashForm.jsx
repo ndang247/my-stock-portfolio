@@ -16,7 +16,9 @@ const RemoveCashForm = (props) => {
 
     onValue(ref(db, "portfolio/"), (snapshot) => {
       const data = snapshot.val();
-      balance = data.balance;
+      if (data?.balance) {
+        balance = data.balance;
+      }
     });
 
     if (amount > balance) {

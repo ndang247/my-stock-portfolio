@@ -11,7 +11,7 @@ const SearchInput = (props) => {
     onValue(ref(db, "portfolio/"), (snapshot) => {
       const data = snapshot.val();
       let arr = [];
-      if (data.holdings) {
+      if (data?.holdings) {
         for (const holding of Object.values(data.holdings)) {
           if (
             holding.symbol.toLowerCase().includes(newValue.toLowerCase()) ||
@@ -21,9 +21,9 @@ const SearchInput = (props) => {
             arr.push(holding);
           }
         }
+        setData(arr);
+        // console.log(data);
       }
-      setData(arr);
-      console.log(data);
     });
     if (newValue) {
     } else {
@@ -41,12 +41,12 @@ const SearchInput = (props) => {
     const holding = data.find(
       (holding) => `${holding.exchDisp}:${holding.symbol}` === value
     );
-    console.log(holding);
+    // console.log(holding);
     setMaxQuantity(holding.quantity);
     setPurchasedPrice(holding.regularMarketPrice);
 
     const symbol = value.split(":")[1];
-    console.log(value.split(":")[1]);
+    // console.log(value.split(":")[1]);
 
     const str = qs.stringify({ symbol: symbol });
 
@@ -62,7 +62,7 @@ const SearchInput = (props) => {
     axios
       .request(config)
       .then(function (response) {
-        console.log(response.data.quoteResponse.result[0].regularMarketPrice);
+        // console.log(response.data.quoteResponse.result[0].regularMarketPrice);
         setMarketPrice(
           response.data.quoteResponse.result[0].regularMarketPrice
         );
@@ -108,7 +108,9 @@ const SellForm = (props) => {
     const db = getDatabase(firebaseApp);
     onValue(ref(db, "portfolio/"), (snapshot) => {
       const data = snapshot.val();
-      setCurrentBalance(data.balance);
+      if (data?.balance) {
+        setCurrentBalance(data.balance);
+      }
     });
   }, []);
 
@@ -139,7 +141,7 @@ const SellForm = (props) => {
       if (`${holding.exchDisp}:${holding.symbol}` === value) {
         newBalance =
           Number(currentBalance) + Number(quantity) * Number(marketPrice);
-        console.log(newBalance.toFixed(2));
+        // console.log(newBalance.toFixed(2));
         newQuantity = Number(maxQuantity) - Number(quantity);
         set(ref(db, "portfolio/balance"), newBalance.toFixed(2));
         if (newQuantity === 0) {

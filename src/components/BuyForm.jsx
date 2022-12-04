@@ -33,7 +33,7 @@ const fetch = (value, callback) => {
         // console.log(value);
         if (currentValue === value) {
           const { quotes } = response.data;
-          console.log(quotes);
+          // console.log(quotes);
           const data = quotes.map((quote) => quote);
           // console.log(data);
           callback(data);
@@ -64,7 +64,7 @@ const SearchInput = (props) => {
   const handleSelect = (value) => {
     const { setPrice } = props;
     const symbol = value.split(":")[1];
-    console.log(value.split(":")[1]);
+    // console.log(value.split(":")[1]);
     const str = qs.stringify({ symbol: symbol });
 
     const config = {
@@ -79,7 +79,7 @@ const SearchInput = (props) => {
     axios
       .request(config)
       .then(function (response) {
-        console.log(response.data.quoteResponse.result[0].regularMarketPrice);
+        // console.log(response.data.quoteResponse.result[0].regularMarketPrice);
         setPrice(response.data.quoteResponse.result[0].regularMarketPrice);
       })
       .catch(function (error) {
@@ -121,7 +121,9 @@ const BuyForm = (props) => {
     const db = getDatabase(firebaseApp);
     onValue(ref(db, "portfolio/"), (snapshot) => {
       const data = snapshot.val();
-      setCurrentBalance(data.balance);
+      if (data?.balance) {
+        setCurrentBalance(data.balance);
+      }
     });
   }, []);
 
@@ -133,12 +135,12 @@ const BuyForm = (props) => {
     const db = getDatabase(firebaseApp);
 
     if (total <= currentBalance) {
-      console.log(data);
+      // console.log(data);
 
       onValue(ref(db, "portfolio/"), (snapshot) => {
         const data = snapshot.val();
-        console.log(data);
-        if (data.holdings) {
+        // console.log(data);
+        if (data?.holdings) {
           for (const holding of Object.values(data.holdings)) {
             if (`${holding.exchDisp}:${holding.symbol}` === value) {
               currentQuantity = holding.quantity;
@@ -149,7 +151,7 @@ const BuyForm = (props) => {
 
       data.forEach((item) => {
         if (`${item.exchDisp}:${item.symbol}` === value) {
-          console.log(item);
+          // console.log(item);
           set(
             ref(
               db,
