@@ -50,7 +50,7 @@ const columns = [
     // sorter: (a, b) => a.age - b.age,
   },
   {
-    title: "PRICE",
+    title: "PURCHASED PRICE",
     dataIndex: "regularMarketPrice",
     // filters: [
     //   {

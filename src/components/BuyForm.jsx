@@ -148,10 +148,7 @@ const BuyForm = (props) => {
       });
 
       data.forEach((item) => {
-        if (
-          item.exchDisp === value.split(":")[0] &&
-          item.symbol === value.split(":")[1]
-        ) {
+        if (`${item.exchDisp}:${item.symbol}` === value) {
           console.log(item);
           set(
             ref(
@@ -177,7 +174,10 @@ const BuyForm = (props) => {
             }
           );
           setCurrentBalance(currentBalance - total);
-          set(ref(db, `portfolio/balance`), (currentBalance - total).toFixed(2));
+          set(
+            ref(db, `portfolio/balance`),
+            (currentBalance - total).toFixed(2)
+          );
         }
       });
     } else {
@@ -217,11 +217,11 @@ const BuyForm = (props) => {
               setData={setData}
               value={value}
               setValue={setValue}
+              setPrice={setPrice}
               placeholder="Search Stock"
               style={{
                 width: "100%",
               }}
-              setPrice={setPrice}
             />
           </Form.Item>
           <Form.Item label="Quantity" name="quantity">
@@ -230,7 +230,7 @@ const BuyForm = (props) => {
               value={quantity}
               onChange={(value) => setQuantity(value)}
               style={{
-                width: "50%",
+                width: "100%",
               }}
             />
           </Form.Item>
@@ -241,7 +241,7 @@ const BuyForm = (props) => {
               value={price}
               disabled
               style={{
-                width: "50%",
+                width: "100%",
               }}
             />
           </Form.Item>
