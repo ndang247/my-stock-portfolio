@@ -14,11 +14,11 @@ const fetch = (value, callback) => {
   }
   currentValue = value;
   const req = () => {
-    const str = qs.stringify({ q: value });
+    const str = qs.stringify({ q: value, region: "US" });
 
     const config = {
       method: "GET",
-      url: `/auto-complete.json`,
+      url: `https://yh-finance.p.rapidapi.com/auto-complete?${str}`,
       headers: {
         "X-RapidAPI-Key": "d9d6283b27msh83f7e308bb7541ep127913jsn1e30569668fb",
         "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
@@ -65,11 +65,11 @@ const SearchInput = (props) => {
     const { setPrice } = props;
     const symbol = value.split(":")[1];
     // console.log(value.split(":")[1]);
-    const str = qs.stringify({ symbol: symbol });
+    const str = qs.stringify({ symbols: symbol, region: "US" });
 
     const config = {
       method: "GET",
-      url: `/market-quotes.json`,
+      url: `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?${str}`,
       headers: {
         "X-RapidAPI-Key": "d9d6283b27msh83f7e308bb7541ep127913jsn1e30569668fb",
         "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",

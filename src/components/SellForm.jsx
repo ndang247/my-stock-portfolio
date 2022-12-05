@@ -48,11 +48,11 @@ const SearchInput = (props) => {
     const symbol = value.split(":")[1];
     // console.log(value.split(":")[1]);
 
-    const str = qs.stringify({ symbol: symbol });
+    const str = qs.stringify({ symbols: symbol, region: "US" });
 
     const config = {
       method: "GET",
-      url: `/market-quotes.json`,
+      url: `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?${str}`,
       headers: {
         "X-RapidAPI-Key": "d9d6283b27msh83f7e308bb7541ep127913jsn1e30569668fb",
         "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
