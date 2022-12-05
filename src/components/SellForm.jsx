@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Select, Button, InputNumber, Divider, Alert } from "antd";
+import { Form, Select, Button, InputNumber, Divider, Alert, Spin } from "antd";
 import { getDatabase, ref, set, onValue, remove } from "firebase/database";
 import qs from "qs";
 import axios from "axios";
@@ -25,10 +25,6 @@ const SearchInput = (props) => {
         // console.log(data);
       }
     });
-    if (newValue) {
-    } else {
-      setData([]);
-    }
   };
 
   const handleChange = (newValue) => {
@@ -37,7 +33,14 @@ const SearchInput = (props) => {
   };
 
   const handleSelect = (value) => {
-    const { data, setMaxQuantity, setPurchasedPrice, setMarketPrice } = props;
+    const {
+      data,
+      setMaxQuantity,
+      setPurchasedPrice,
+      setMarketPrice,
+      setLoading,
+    } = props;
+    setLoading(true);
     const holding = data.find(
       (holding) => `${holding.exchDisp}:${holding.symbol}` === value
     );
@@ -66,6 +69,7 @@ const SearchInput = (props) => {
         setMarketPrice(
           response.data.quoteResponse.result[0].regularMarketPrice
         );
+        setLoading(false);
       })
       .catch(function (error) {
         console.error(error);
@@ -75,7 +79,7 @@ const SearchInput = (props) => {
   return (
     <Select
       showSearch
-      value={props.value}
+      value={props.value || null}
       placeholder={props.placeholder}
       style={props.style}
       defaultActiveFirstOption={false}
@@ -102,6 +106,8 @@ const SellForm = (props) => {
   const [purchasedPrice, setPurchasedPrice] = useState(0);
   const [marketPrice, setMarketPrice] = useState(0);
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const { firebaseApp } = props;
@@ -123,7 +129,7 @@ const SellForm = (props) => {
     onValue(ref(db, "portfolio/"), (snapshot) => {
       const data = snapshot.val();
       let arr = [];
-      if (data.holdings) {
+      if (data?.holdings) {
         for (const holding of Object.values(data.holdings)) {
           if (
             holding.symbol.toLowerCase().includes(value.toLowerCase()) ||
@@ -179,6 +185,7 @@ const SellForm = (props) => {
             }
           );
         }
+        setSuccess(true);
       }
     });
     if (newBalance === 0 && newQuantity === 0) {
@@ -203,6 +210,16 @@ const SellForm = (props) => {
           }}
         />
       )}
+      {success && (
+        <Alert
+          message="Success"
+          type="success"
+          style={{
+            width: "30%",
+            marginLeft: "35%",
+          }}
+        />
+      )}
       <Divider />
       <div>
         <Form
@@ -221,12 +238,14 @@ const SellForm = (props) => {
               setMaxQuantity={setMaxQuantity}
               setPurchasedPrice={setPurchasedPrice}
               setMarketPrice={setMarketPrice}
+              setLoading={setLoading}
               firebaseApp={props.firebaseApp}
               placeholder="Search Stock"
               style={{
                 width: "100%",
               }}
             />
+            {loading && <Spin />}
           </Form.Item>
           <Form.Item label="Quantity" name="quantity">
             <InputNumber

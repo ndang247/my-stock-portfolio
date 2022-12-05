@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Divider, Form, InputNumber, Select, Alert } from "antd";
+import { Button, Divider, Form, InputNumber, Select, Alert, Spin } from "antd";
 import axios from "axios";
 import qs from "qs";
 import { getDatabase, ref, set, onValue } from "firebase/database";
@@ -7,7 +7,7 @@ import { getDatabase, ref, set, onValue } from "firebase/database";
 let timeout;
 let currentValue;
 
-const fetch = (value, callback) => {
+const fetch = (value, callback, isLoading) => {
   if (timeout) {
     clearTimeout(timeout);
     timeout = null;
@@ -37,6 +37,7 @@ const fetch = (value, callback) => {
           const data = quotes.map((quote) => quote);
           // console.log(data);
           callback(data);
+          isLoading(false);
         }
       })
       .catch(function (error) {
@@ -48,9 +49,10 @@ const fetch = (value, callback) => {
 
 const SearchInput = (props) => {
   const handleSearch = (newValue) => {
-    const { setData } = props;
+    const { setData, setLoading } = props;
     if (newValue) {
-      fetch(newValue, setData);
+      setLoading(true);
+      fetch(newValue, setData, setLoading);
     } else {
       setData([]);
     }
@@ -62,7 +64,8 @@ const SearchInput = (props) => {
   };
 
   const handleSelect = (value) => {
-    const { setPrice } = props;
+    const { setPrice, setLoading } = props;
+    setLoading(true);
     const symbol = value.split(":")[1];
     // console.log(value.split(":")[1]);
     const str = qs.stringify({ symbols: symbol, region: "US" });
@@ -81,6 +84,7 @@ const SearchInput = (props) => {
       .then(function (response) {
         // console.log(response.data.quoteResponse.result[0].regularMarketPrice);
         setPrice(response.data.quoteResponse.result[0].regularMarketPrice);
+        setLoading(false);
       })
       .catch(function (error) {
         console.error(error);
@@ -115,6 +119,8 @@ const BuyForm = (props) => {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const { firebaseApp } = props;
@@ -182,6 +188,7 @@ const BuyForm = (props) => {
           );
         }
       });
+      setSuccess(true);
     } else {
       setError(true);
     }
@@ -204,6 +211,16 @@ const BuyForm = (props) => {
           }}
         />
       )}
+      {success && (
+        <Alert
+          message="Success"
+          type="success"
+          style={{
+            width: "30%",
+            marginLeft: "35%",
+          }}
+        />
+      )}
       <Divider />
       <div>
         <Form
@@ -220,11 +237,13 @@ const BuyForm = (props) => {
               value={value}
               setValue={setValue}
               setPrice={setPrice}
+              setLoading={setLoading}
               placeholder="Search Stock"
               style={{
                 width: "100%",
               }}
             />
+            {loading && <Spin />}
           </Form.Item>
           <Form.Item label="Quantity" name="quantity">
             <InputNumber
